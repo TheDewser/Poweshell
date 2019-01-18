@@ -1,10 +1,11 @@
 <#
-basic bulk shortened URL lookup
+Basic bulk shortened URL lookup
 Note there is a 10 request rate limit for new URLS with unshorten.me
+Remove HTTP:// from the URLs when making the list.
 
+explode-shortenedurls.ps1 -bulklist <text file of shortened urls> -outfile <path to outfile.csv>
 #>
 
-# Parameter help description
 param(
     [Parameter(Mandatory=$false)]
     [string]$bulklist,
