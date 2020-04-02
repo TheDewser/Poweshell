@@ -6,8 +6,10 @@ $response = Invoke-RestMethod 'https://www.virustotal.com/api/v3/domains/imageto
 $response | ConvertTo-Json
 #>
 
-$apikey = 'YOURKEY' # use param for full script/function
+$apikey = 'yourkey' # use param for full script/function
 $header = @{'x-apikey' = $apikey}
+$domain = 'test.com'
+$url = 'https://www.virustotal.com/api/v3/domains/'+$domain
 
-Invoke-RestMethod -Method 'GET' -Uri 'https://www.virustotal.com/api/v3/domains/imagetopdf.com' -Headers $header |
-ConvertTo-JSON #needed to pull in the full set of attribute values
+Invoke-RestMethod -Method 'GET' -Uri $url -Headers $header | Select-Object Data -ExpandProperty Data |
+ConvertTo-JSON
